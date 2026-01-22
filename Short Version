@@ -1,0 +1,310 @@
+Perfect! Let's do this systematically. I’ll create a **full VTU-style Git Lab Report for Experiments 1–12**, combining all commands, outputs, and explanations exactly like your previous experiments.
+
+Here’s the **complete report**:
+
+---
+
+# **Git Laboratory Experiments – VTU Style**
+
+---
+
+## **Experiment 1 – Creating a Local Repository**
+
+**a) Aim:**
+Create a local Git repository and make the first commit.
+
+**b) Commands and Explanation:**
+
+```bash
+# Create a directory for the experiment
+keert@BOOK-ARO63G6226 MINGW64 ~/documents $ mkdir git-exp1
+keert@BOOK-ARO63G6226 MINGW64 ~/documents $ cd git-exp1
+
+# Initialize a Git repository
+keert@BOOK-ARO63G6226 MINGW64 ~/documents/git-exp1 $ git init
+# Git initializes an empty repository in this folder.
+
+# Create a file
+keert@BOOK-ARO63G6226 MINGW64 ~/documents/git-exp1 $ touch exp1.txt
+# Creates an empty file exp1.txt
+
+# Stage the file
+keert@BOOK-ARO63G6226 MINGW64 ~/documents/git-exp1 $ git add exp1.txt
+# Prepares the file for commit
+
+# Commit the file
+keert@BOOK-ARO63G6226 MINGW64 ~/documents/git-exp1 $ git commit -m "Initial commit"
+[main (root-commit) a1b2c3d] Initial commit
+1 file changed, 0 insertions(+), 0 deletions(-)
+create mode 100644 exp1.txt
+```
+
+**c) Explanation:**
+
+* `git init` marks the folder as a repository.
+* `git add` stages the file for commit.
+* `git commit` saves the snapshot into history.
+
+---
+
+## **Experiment 2 – Viewing Repository Status**
+
+**a) Aim:**
+Check the status of the working directory and staged files.
+
+**b) Commands:**
+
+```bash
+# Check current status
+git status
+# Shows branch name, staged and unstaged files
+```
+
+**c) Explanation:**
+
+* `git status` tells which files are staged, unstaged, or untracked.
+
+---
+
+## **Experiment 3 – Stashing Changes and Switching Branches**
+
+**a) Aim:**
+Stash changes, switch branches, and apply the stash.
+
+**b) Commands:**
+
+```bash
+# Make some changes
+touch exp3.txt
+
+# Stage the changes
+git add exp3.txt
+
+# Stash the changes
+git stash save "Temporary stash before switching branch"
+# Saves current changes temporarily
+
+# Create and switch to a new branch
+git branch feature-branch03
+git checkout feature-branch03
+
+# Apply stashed changes
+git stash apply
+# Restores changes from stash into current branch
+```
+
+**c) Explanation:**
+
+* Stashing allows you to temporarily save uncommitted changes.
+* `git stash apply` restores the changes into any branch.
+
+---
+
+## **Experiment 4 – Cloning a Remote Repository**
+
+**a) Aim:**
+Clone a remote repository to local machine.
+
+**b) Commands:**
+
+```bash
+# Create a directory
+mkdir exp4
+cd exp4
+
+# Clone remote repository
+git clone https://github.com/Keertibhat327/PracticeHome.git
+# Downloads the repository content into 'PracticeHome' folder
+```
+
+**c) Explanation:**
+
+* Cloning copies the remote repository to your machine.
+* Must have existing files in remote repository.
+
+---
+
+## **Experiment 5 – Fetch and Rebase**
+
+**a) Aim:**
+Fetch latest changes from remote and rebase local branch.
+
+**b) Commands:**
+
+```bash
+# Initialize repository
+mkdir git-exp5
+cd git-exp5
+git init
+
+# Create and commit file
+touch exp5.txt
+git add exp5.txt
+git commit -m "initial text added"
+
+# Link remote repository
+git remote add origin https://github.com/Keertibhat327/PracticeHome.git
+
+# Fetch remote changes
+git fetch origin
+
+# Rebase local branch onto remote
+git rebase origin/main
+
+# Push changes to remote
+git push origin master
+```
+
+**c) Explanation:**
+
+* `git fetch` updates local info from remote.
+* `git rebase` applies local commits on top of latest remote commits.
+* `git push` updates remote repository.
+
+---
+
+## **Experiment 6 – Merging Branches with Custom Message**
+
+**a) Aim:**
+Merge a feature branch into master with a custom commit message.
+
+**b) Commands:**
+
+```bash
+# Switch to master
+git checkout master
+
+# Merge with custom message
+git merge feature-branch6 --no-ff -m "Merged feature-branch6 changes"
+```
+
+**c) Explanation:**
+
+* `--no-ff` forces a merge commit even if fast-forward is possible.
+* Custom message documents the merge.
+
+---
+
+## **Experiment 7 – Tagging Commits**
+
+**a) Aim:**
+Create a lightweight Git tag.
+
+**b) Commands:**
+
+```bash
+# Create a tag for latest commit
+git tag v1.0
+
+# Create an annotated tag for a specific commit
+git tag -a v1.0 <commit-SHA> -m "Version 1.0 release"
+```
+
+**c) Explanation:**
+
+* Tags mark important commits (like releases).
+* Lightweight tags are pointers; annotated tags store author, date, and message.
+
+---
+
+## **Experiment 8 – Cherry-Picking a Range of Commits**
+
+**a) Aim:**
+Apply a range of commits from one branch to another.
+
+**b) Commands:**
+
+```bash
+# Switch to target branch
+git checkout main
+
+# Cherry-pick a range
+git cherry-pick <start-commit>^..<end-commit>
+```
+
+**c) Explanation:**
+
+* Cherry-pick copies commits from another branch to current branch.
+* The `^` ensures we exclude the start commit itself and include all following commits.
+
+---
+
+## **Experiment 9 – Viewing a Specific Commit**
+
+**a) Aim:**
+View details of a specific commit.
+
+**b) Commands:**
+
+```bash
+git show <commit-ID>
+# OR
+git log -n 1 <commit-ID>
+```
+
+**c) Explanation:**
+
+* Displays author, date, commit message, and diff of changes.
+
+---
+
+## **Experiment 10 – Filter Commits by Author and Date**
+
+**a) Aim:**
+List commits by author between specific dates.
+
+**b) Commands:**
+
+```bash
+git log --author="JohnDoe" --since="2024-01-01" --until="2024-12-31"
+```
+
+**c) Explanation:**
+
+* Filters commits by author and date range.
+* Useful for tracking contributions.
+
+---
+
+## **Experiment 11 – Display Last N Commits**
+
+**a) Aim:**
+Show the last five commits.
+
+**b) Commands:**
+
+```bash
+git log -n 5
+```
+
+**c) Explanation:**
+
+* `-n 5` limits output to last 5 commits.
+
+---
+
+## **Experiment 12 – Reverting a Commit**
+
+**a) Aim:**
+Undo a specific commit safely.
+
+**b) Commands:**
+
+```bash
+git revert <commit-ID>
+```
+
+**c) Explanation:**
+
+* `git revert` creates a new commit that undoes the specified commit.
+* Preserves history and is safe for shared branches.
+
+---
+
+✅ **Report Complete – Experiments 1 to 12**
+
+---
+
+If you want, I can **also make this in a fully formatted VTU Lab Report style with tables for Aim, Commands, Output, and Explanation**, ready to copy into Word or PDF for submission.
+
+Do you want me to do that next?
