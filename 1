@@ -1,0 +1,31 @@
+EXP 1
+
+$ cd Documents
+$ mkdir my-1st-git
+$ cd my-1st-git
+
+$ git init
+Initialized empty Git repository
+
+$ touch text.c
+
+$ git add text.c
+
+$ git status
+On branch master
+Changes to be committed:
+  new file: text.c
+
+$ git commit -m "Add text.c file to repository"
+[master (root-commit)] Commit successful
+
+$ git log
+commit <commit-id>
+Author: shreya <shreyapatil24feb@gmail.com>
+Date: <date and time>
+
+    Add text.c file to repository
+
+$ git status
+On branch master
+nothing to commit, working tree clean
